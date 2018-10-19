@@ -1,11 +1,24 @@
 <div style="text-align:center">
 
+  <fieldset>
+    <legend style="text-align: center">Cadastro</legend>
+    <label>Nome</label><br>
+    <input [(ngModel)]="pessoa.nome" /><br>
+    <label>Sobrenome</label><br>
+    <input [(ngModel)]="pessoa.sobrenome" /><br>
 
-  <input [(ngModel)]="pessoa.nome" />
-  <input [(ngModel)]="pessoa.sobrenome" />
+    <label >Sexo</label>
+    <select [(ngModel)]="pessoa.sexo">
+      <option value="undefined">Selecione</option>
+      <option  *ngFor="let s of sexo">{{s}}</option>
+    </select><br>
+    <button (click)="salvar()">Salvar</button>
+</fieldset>
 </div>
 
 <div style="width: 50%; margin: 0 auto">
+  <fieldset>
+    <legend>Pessoas</legend>
   <table>
     <tr>
       <td>Nome</td>
@@ -17,9 +30,11 @@
       <tr *ngFor="let p of pessoas">
         <td>{{p.nome}}</td>
         <td>{{p.sobrenome}}</td>
-        <td></td>
+        <td>{{p.sexo}}</td>
+        <td><button (click)="excluir(p.id)">Excluir</button></td>
+        <td><button (click)="editar(p)">Editar</button></td>
       </tr>
     </tbody>
   </table>
-
+</fieldset>
 </div>
